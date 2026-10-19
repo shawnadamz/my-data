@@ -1,0 +1,293 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNP+jsgySyl5S77VEUzzqNl",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/shawnadamz/my-data/blob/main/QUESTION%20ThREE\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "EqIa92EFbxad",
+        "outputId": "0b8fd134-23fa-43b8-81e8-4a509749cc45"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "(a______________________________________________________________________\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(\"(a______________________________________________________________________\")\n",
+        "# Base class\n",
+        "class Person:\n",
+        "    def __init__(self, name, age):\n",
+        "        self.name = name\n",
+        "        self.age = age\n",
+        "\n",
+        "    def introduce(self):\n",
+        "        return f\"My name is {self.name}.\"\n",
+        "\n",
+        "\n",
+        "# Derived class for students\n",
+        "class Student(Person):\n",
+        "    def __init__(self, name, age, student_id, course):\n",
+        "        super().__init__(name, age)\n",
+        "        self.student_id = student_id\n",
+        "        self.course = course\n",
+        "\n",
+        "    def introduce(self):\n",
+        "        return (\n",
+        "            f\"I am {self.name}, a student studying \"\n",
+        "            f\"{self.course}.\"\n",
+        "        )\n",
+        "\n",
+        "\n",
+        "# Derived class for teachers\n",
+        "class Teacher(Person):\n",
+        "    def __init__(self, name, age, subject):\n",
+        "        super().__init__(name, age)\n",
+        "        self.subject = subject\n",
+        "\n",
+        "    def introduce(self):\n",
+        "        return (\n",
+        "            f\"I am {self.name}, a teacher teaching \"\n",
+        "            f\"{self.subject}.\"\n",
+        "        )"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "The program uses a school management system to demonstrate inheritance.\n",
+        "\n",
+        "Person: This is the base class. It contains the common attributes name and age, which are shared by students and teachers.\n",
+        "Student: This is a derived class that inherits from Person. It also contains student_id and course.\n",
+        "Teacher: This class inherits from Person and has an additional attribute called subject.\n",
+        "super().__init__(name, age): This calls the constructor of the parent class, allowing the derived classes to reuse the common attributes.\n",
+        "\n",
+        "Inheritance reduces code repetition because the student and teacher classes do not need to define their own copies of the common attributes"
+      ],
+      "metadata": {
+        "id": "8Psy9s44cRMJ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"(b______________________________________________________________________)\")\n",
+        "# Base class\n",
+        "class Person:\n",
+        "    def __init__(self, name, age):\n",
+        "        self.name = name\n",
+        "        self.age = age\n",
+        "\n",
+        "    def introduce(self):\n",
+        "        return f\"My name is {self.name}.\"\n",
+        "\n",
+        "\n",
+        "# Student class\n",
+        "class Student(Person):\n",
+        "    def __init__(self, name, age, student_id, course):\n",
+        "        super().__init__(name, age)\n",
+        "        self.__student_id = student_id\n",
+        "        self.course = course\n",
+        "\n",
+        "    # Getter method\n",
+        "    def get_student_id(self):\n",
+        "        return self.__student_id\n",
+        "\n",
+        "    # Setter method\n",
+        "    def set_student_id(self, new_id):\n",
+        "        if new_id:\n",
+        "            self.__student_id = new_id\n",
+        "        else:\n",
+        "            print(\"Student ID cannot be empty.\")\n",
+        "\n",
+        "    def introduce(self):\n",
+        "        return (\n",
+        "            f\"I am {self.name}, a student studying \"\n",
+        "            f\"{self.course}.\"\n",
+        "        )\n",
+        "\n",
+        "\n",
+        "# Teacher class\n",
+        "class Teacher(Person):\n",
+        "    def __init__(self, name, age, subject):\n",
+        "        super().__init__(name, age)\n",
+        "        self.subject = subject\n",
+        "\n",
+        "    def introduce(self):\n",
+        "        return (\n",
+        "            f\"I am {self.name}, a teacher teaching \"\n",
+        "            f\"{self.subject}.\"\n",
+        "        )"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NORu4kMickV4",
+        "outputId": "dd39b19a-1940-4c3d-9bac-6cb0c946db59"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "(b______________________________________________________________________)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Explanation of encapsulation\n",
+        "\n",
+        "Encapsulation involves keeping certain data inside a class and controlling how it is accessed or modified.\n",
+        "\n",
+        "In this program:\n",
+        "\n",
+        "self.__student_id defines a name-mangled private attribute.\n",
+        "get_student_id() retrieves the student's ID.\n",
+        "set_student_id() allows the ID to be updated after checking that the new value is not empty.\n",
+        "\n",
+        "This helps prevent direct access to the attribute through its ordinary public name and provides a controlled way of updating it.\n",
+        "\n",
+        "Explanation of polymorphism\n",
+        "\n",
+        "Polymorphism allows the same method to produce different results depending on the object using it.\n",
+        "\n",
+        "In this example, both Student and Teacher have an introduce() method.\n",
+        "\n",
+        "For a student, the method returns the student's name and course.\n",
+        "For a teacher, the method returns the teacher's name and subject.\n",
+        "\n",
+        "Although the method has the same name, its behaviour depends on the class of the object"
+      ],
+      "metadata": {
+        "id": "8WCxpR-ldC85"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Create objects\n",
+        "student1 = Student(\"John\", 20, \"ST101\", \"Data Science\")\n",
+        "teacher1 = Teacher(\"Mary\", 35, \"Python Programming\")\n",
+        "\n",
+        "# Display information\n",
+        "print(\"SCHOOL MANAGEMENT SYSTEM\")\n",
+        "print(\"-------------------------\")\n",
+        "\n",
+        "print(\"\\nStudent Information\")\n",
+        "print(\"Name:\", student1.name)\n",
+        "print(\"Age:\", student1.age)\n",
+        "print(\"Student ID:\", student1.get_student_id())\n",
+        "print(\"Course:\", student1.course)\n",
+        "print(student1.introduce())\n",
+        "\n",
+        "print(\"\\nTeacher Information\")\n",
+        "print(\"Name:\", teacher1.name)\n",
+        "print(\"Age:\", teacher1.age)\n",
+        "print(\"Subject:\", teacher1.subject)\n",
+        "print(teacher1.introduce())\n",
+        "\n",
+        "# Demonstrate encapsulation\n",
+        "print(\"\\nUpdating Student ID\")\n",
+        "student1.set_student_id(\"ST102\")\n",
+        "print(\"Updated ID:\", student1.get_student_id())\n",
+        "\n",
+        "# Demonstrate polymorphism\n",
+        "print(\"\\nPolymorphism Demonstration\")\n",
+        "people = [student1, teacher1]\n",
+        "for person in people:\n",
+        "    print(person.introduce())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ypfAMpSWeOmd",
+        "outputId": "47929b0d-8b81-46c2-b74b-eb1cd1d659c5"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "SCHOOL MANAGEMENT SYSTEM\n",
+            "-------------------------\n",
+            "\n",
+            "Student Information\n",
+            "Name: John\n",
+            "Age: 20\n",
+            "Student ID: ST101\n",
+            "Course: Data Science\n",
+            "I am John, a student studying Data Science.\n",
+            "\n",
+            "Teacher Information\n",
+            "Name: Mary\n",
+            "Age: 35\n",
+            "Subject: Python Programming\n",
+            "I am Mary, a teacher teaching Python Programming.\n",
+            "\n",
+            "Updating Student ID\n",
+            "Updated ID: ST102\n",
+            "\n",
+            "Polymorphism Demonstration\n",
+            "I am John, a student studying Data Science.\n",
+            "I am Mary, a teacher teaching Python Programming.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Conclusion\n",
+        "\n",
+        "The school management system demonstrates the main concepts of object-oriented programming in Python.\n",
+        "\n",
+        "Inheritance allows the Student and Teacher classes to reuse attributes and methods from the Person class. Encapsulation protects the student ID and provides getter and setter methods for accessing and updating it. Polymorphism allows the same introduce() method to produce different outputs for students and teachers.\n",
+        "\n",
+        "Finally, separating the class definitions into school.py and importing them into main.py demonstrates how Python modules can be used to organize a program."
+      ],
+      "metadata": {
+        "id": "LFFtY4nNemSC"
+      }
+    }
+  ]
+}
